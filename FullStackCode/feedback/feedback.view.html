@@ -1,0 +1,45 @@
+﻿<div>
+    <div>
+        <input type="button" value="View" ng-click="vm.feedback()"/>
+        <input type="button" value="Add" ng-click="vm.addfeedback()" />
+    </div>
+    <div ng-if="vm.showList && !vm.showFeedBackForm">
+    <ul >
+        <li ng-repeat="user in vm.listOfFeedbacks">
+           <p>{{user.FromEmployee}}</p> 
+			<p>{{user.Feedback}} </p>
+			{{user.ToEmployee}}
+        </li>
+    </ul>
+        </div>
+
+
+
+    <div ng-if="vm.showFeedBackForm && !vm.showList">
+        <form name="form" ng-submit="vm.newAddFeedback()" role="form">
+            <div class="form-group">
+                <label for="username">FromEmployee</label>
+                <input type="text" name="FromEmployee" id="FromEmployee" class="form-control" ng-model="vm.newfeedback.FromEmployee" required />
+                
+            </div>
+            <div class="form-group">
+                <label for="ToEmployee">ToEmployee</label>
+                <input type="text" name="ToEmployee" id="ToEmployee" class="form-control" ng-model="vm.newfeedback.ToEmployee" required />
+            </div>
+            <div class="form-group">
+                <label for="ToEmployee">FeedBacK</label>
+                <input type="textarea" name="FeedBacK" id="FeedBacK" class="form-control" ng-model="vm.newfeedback.Feedback" required />
+                <!--<a href="#/register" class="btn btn-link">Register</a>-->
+            </div>
+            <div class="form-actions">
+                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Submit FeedBack</button>
+
+            </div>
+        </form>
+    </div>
+
+    <div ng-if="vm.showMessage!=''">
+
+        {{vm.showMessage}}
+    </div>
+	</div>
